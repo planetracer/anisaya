@@ -53,9 +53,9 @@ export default function Home() {
 
           <div className="relative h-80 bg-gradient-to-br from-brand-lavender-mist to-brand-lilac-white rounded-[20px] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop"
-              alt="Clean modern kitchen"
-              className="w-full h-full object-cover"
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop"
+              alt="Clean bright living room with modern furniture"
+              className="w-full h-full object-cover brightness-95"
             />
           </div>
         </div>

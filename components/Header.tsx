@@ -10,18 +10,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 bg-white border-b border-brand-lavender-mist z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo - Bubble Design from Brand Guide */}
+        {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            {/* Main purple bubble */}
-            <circle cx="12" cy="12" r="8" fill="#5B4B9A" stroke="#5B4B9A" strokeWidth="1"/>
-            {/* Small pink bubble */}
-            <circle cx="24" cy="8" r="5" fill="#E58FB8" opacity="0.9"/>
-            {/* Tiny pink accent */}
-            <circle cx="30" cy="16" r="3" fill="#E58FB8" opacity="0.7"/>
-            {/* Soft violet bubble */}
-            <circle cx="20" cy="26" r="6" fill="#7A6DB0" opacity="0.8"/>
-          </svg>
+          <img
+            src="/images/anisaya-icon-square.svg"
+            alt="Anisaya Cleaning logo"
+            width="40"
+            height="40"
+            className="flex-shrink-0"
+          />
           <div>
             <div className="text-lg font-fredoka font-bold text-brand-purple">
               anisaya
