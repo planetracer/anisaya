@@ -6,28 +6,24 @@ export default function ServiceAreasPage() {
     {
       city: 'Allen',
       description: 'Professional house cleaning throughout Allen, TX',
-      zipCodes: '75013, 75014',
       neighborhoods: 'Heritage Distillery, Watters Creek, Old Town Allen, Auburn Hills',
       highlights: 'Serving both new and established neighborhoods with flexible scheduling',
     },
     {
       city: 'Plano',
       description: 'Trusted cleaning services in Plano, TX',
-      zipCodes: '75074, 75075',
       neighborhoods: 'Downtown Plano, Park Cities, Spring Creek, Lakeside',
       highlights: 'Expert service for all home sizes from townhomes to large estates',
     },
     {
       city: 'McKinney',
       description: 'Quality home cleaning in McKinney, TX',
-      zipCodes: '75001, 75002',
       neighborhoods: 'Old Town McKinney, Adriatica, The Highlands, Stonebridge',
       highlights: 'Same-day booking available for most requests',
     },
     {
       city: 'Frisco',
       description: 'Expert cleaning for Frisco residents',
-      zipCodes: '75003',
       neighborhoods: 'The Columns, Coppell Ranch, Star Canyon, Prairie Grass Ranch',
       highlights: 'Specialized service for upscale homes and active families',
     },
@@ -41,8 +37,11 @@ export default function ServiceAreasPage() {
           <h1 className="font-fredoka text-hero-mobile md:text-hero text-brand-purple mb-4">
             Service Areas
           </h1>
-          <p className="text-body text-brand-gray mb-8">
-            Anisaya Cleaning proudly serves the Dallas-Fort Worth area with professional, reliable cleaning services.
+          <p className="text-body text-brand-gray mb-4">
+            We service a 15-mile radius around McKinney, covering Allen, Plano, McKinney, Frisco and surrounding areas.
+          </p>
+          <p className="text-small text-brand-gray">
+            If you're unsure whether your address is covered, just enter your zip code in the quote form and we'll let you know!
           </p>
         </div>
       </section>
@@ -71,8 +70,6 @@ export default function ServiceAreasPage() {
                   <p className="text-small text-brand-gray">✓ {area.highlights}</p>
                 </div>
 
-                <p className="text-small text-brand-gray mb-6">Service zip codes: {area.zipCodes}</p>
-
                 <Link href="/quote" className="text-brand-purple hover:underline font-semibold">
                   Get quote for {area.city} →
                 </Link>
@@ -86,17 +83,17 @@ export default function ServiceAreasPage() {
       <section className="section bg-brand-lilac-white">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-4">
-            Service Area Details
+            Our Service Radius
           </h2>
           <div className="space-y-4 text-body text-brand-gray">
             <p>
-              All four cities are served with the same high-quality cleaning standards and professional team members.
+              We service a <strong>15-mile radius around McKinney (75002)</strong>, which covers Allen, Plano, McKinney, Frisco, and surrounding communities.
             </p>
             <p>
-              We offer same-week scheduling and flexible time slots to fit your busy schedule.
+              All areas receive the same professional standards and service quality. We offer same-week scheduling and flexible time slots to fit your busy schedule.
             </p>
             <p>
-              If your address is outside our listed service areas, reach out and we can discuss options.
+              <strong>Not sure if we cover your address?</strong> Simply enter your zip code in our instant quote form and we'll confirm service availability right away.
             </p>
           </div>
         </div>
