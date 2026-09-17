@@ -8,6 +8,7 @@ import CleaningTypeStep from './quote/CleaningTypeStep';
 import ContactInfoStep from './quote/ContactInfoStep';
 import BookingStep from './quote/BookingStep';
 import PriceStep from './quote/PriceStep';
+import Chatbot from './Chatbot';
 
 export type QuoteData = {
   zipCode: string;
@@ -150,10 +151,13 @@ export default function QuoteForm() {
           <PriceStep
             data={quoteData as QuoteData}
             onBack={() => setStep('contactInfo')}
+            onBookNow={() => setStep('booking')}
             onChatOpen={() => setShowChatbot(true)}
           />
         )}
       </div>
+
+      {showChatbot && <Chatbot />}
     </div>
   );
 }
