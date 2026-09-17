@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import CustomSelect from '../CustomSelect';
 import type { QuoteData } from '../QuoteForm';
 
 interface HomeDetailsStepProps {
@@ -18,13 +19,26 @@ export default function HomeDetailsStep({ data, onChange, onBack }: HomeDetailsS
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (squareFootage && bedrooms && fullBathrooms !== undefined && pets !== undefined) {
+    if (squareFootage && bedrooms && fullBathrooms && pets) {
+      const sqftMap: { [key: string]: string } = {
+        'Under 1,000 sqft': 'under1000',
+        '1,000 - 2,000 sqft': '1000-2000',
+        '2,000 - 3,000 sqft': '2000-3000',
+        '3,000+ sqft': '3000+',
+      };
+
+      const petMap: { [key: string]: string } = {
+        'None': 'none',
+        '1': '1',
+        '2+': '2+',
+      };
+
       onChange({
-        squareFootage,
+        squareFootage: sqftMap[squareFootage],
         bedrooms,
         fullBathrooms,
         halfBathrooms: halfBathrooms || '0',
-        pets,
+        pets: petMap[pets],
       });
     }
   };
@@ -39,101 +53,40 @@ export default function HomeDetailsStep({ data, onChange, onBack }: HomeDetailsS
       </p>
 
       <div className="space-y-4 mb-6">
-        {/* Square Footage */}
-        <div>
-          <label className="block text-small font-nunito font-semibold text-brand-ink mb-2">
-            Square footage
-          </label>
-          <select
-            value={squareFootage}
-            onChange={(e) => setSquareFootage(e.target.value)}
-            className="form-field w-full"
-            required
-          >
-            <option value="">Select range</option>
-            <option value="under1000">Under 1,000 sqft</option>
-            <option value="1000-2000">1,000 - 2,000 sqft</option>
-            <option value="2000-3000">2,000 - 3,000 sqft</option>
-            <option value="3000+">3,000+ sqft</option>
-          </select>
-        </div>
+        <CustomSelect
+          label="Square footage"
+          value={squareFootage}
+          onChange={setSquareFootage}
+          options={['Under 1,000 sqft', '1,000 - 2,000 sqft', '2,000 - 3,000 sqft', '3,000+ sqft']}
+        />
 
-        {/* Bedrooms */}
-        <div>
-          <label className="block text-small font-nunito font-semibold text-brand-ink mb-2">
-            Bedrooms
-          </label>
-          <select
-            value={bedrooms}
-            onChange={(e) => setBedrooms(e.target.value)}
-            className="form-field w-full"
-            required
-          >
-            <option value="">Select number</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6+">6+</option>
-          </select>
-        </div>
+        <CustomSelect
+          label="Bedrooms"
+          value={bedrooms}
+          onChange={setBedrooms}
+          options={['1', '2', '3', '4', '5', '6+']}
+        />
 
-        {/* Full Bathrooms */}
-        <div>
-          <label className="block text-small font-nunito font-semibold text-brand-ink mb-2">
-            Full bathrooms
-          </label>
-          <select
-            value={fullBathrooms}
-            onChange={(e) => setFullBathrooms(e.target.value)}
-            className="form-field w-full"
-            required
-          >
-            <option value="">Select number</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5+</option>
-          </select>
-        </div>
+        <CustomSelect
+          label="Full bathrooms"
+          value={fullBathrooms}
+          onChange={setFullBathrooms}
+          options={['1', '2', '3', '4', '5+']}
+        />
 
-        {/* Half Bathrooms */}
-        <div>
-          <label className="block text-small font-nunito font-semibold text-brand-ink mb-2">
-            Half bathrooms
-          </label>
-          <select
-            value={halfBathrooms}
-            onChange={(e) => setHalfBathrooms(e.target.value)}
-            className="form-field w-full"
-          >
-            <option value="">Select number</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </div>
+        <CustomSelect
+          label="Half bathrooms"
+          value={halfBathrooms}
+          onChange={setHalfBathrooms}
+          options={['0', '1', '2', '3']}
+        />
 
-        {/* Pets */}
-        <div>
-          <label className="block text-small font-nunito font-semibold text-brand-ink mb-2">
-            Pets
-          </label>
-          <select
-            value={pets}
-            onChange={(e) => setPets(e.target.value)}
-            className="form-field w-full"
-            required
-          >
-            <option value="">Select option</option>
-            <option value="none">None</option>
-            <option value="1">1</option>
-            <option value="2+">2+</option>
-          </select>
-        </div>
+        <CustomSelect
+          label="Pets"
+          value={pets}
+          onChange={setPets}
+          options={['None', '1', '2+']}
+        />
       </div>
 
       <div className="flex gap-4">

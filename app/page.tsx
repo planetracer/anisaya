@@ -1,7 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import CustomSelect from '@/components/CustomSelect';
 import { BUSINESS_INFO } from '@/lib/settings';
 
 export default function Home() {
+  const [homeSize, setHomeSize] = useState('');
+  const [bedrooms, setBedrooms] = useState('');
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -18,29 +25,18 @@ export default function Home() {
             {/* Mini Quote Box */}
             <div className="bg-white border border-brand-lavender-mist rounded-[20px] p-6 mb-4">
               <div className="space-y-3 mb-4">
-                <div>
-                  <label className="text-small font-semibold text-brand-ink block mb-1">
-                    Home size
-                  </label>
-                  <select className="form-field w-full">
-                    <option>Under 1,000 sqft</option>
-                    <option>1,000 - 2,000 sqft</option>
-                    <option>2,000 - 3,000 sqft</option>
-                    <option>3,000+ sqft</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-small font-semibold text-brand-ink block mb-1">
-                    Bedrooms
-                  </label>
-                  <select className="form-field w-full">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5+</option>
-                  </select>
-                </div>
+                <CustomSelect
+                  label="Home size"
+                  value={homeSize}
+                  onChange={setHomeSize}
+                  options={['Under 1,000 sqft', '1,000 - 2,000 sqft', '2,000 - 3,000 sqft', '3,000+ sqft']}
+                />
+                <CustomSelect
+                  label="Bedrooms"
+                  value={bedrooms}
+                  onChange={setBedrooms}
+                  options={['1', '2', '3', '4', '5+']}
+                />
               </div>
               <Link href="/quote" className="btn-primary w-full block text-center">
                 See my price
