@@ -38,7 +38,7 @@ export default function ServiceAreasPage() {
             Service Areas
           </h1>
           <p className="text-body text-brand-gray mb-4">
-            We service a 15-mile radius around McKinney, covering Allen, Plano, McKinney, Frisco and surrounding areas.
+            We service a 15-mile radius around Allen, covering Allen, Plano, McKinney, Frisco and surrounding areas.
           </p>
           <p className="text-small text-brand-gray">
             If you're unsure whether your address is covered, just enter your zip code in the quote form and we'll let you know!
@@ -87,7 +87,7 @@ export default function ServiceAreasPage() {
           </h2>
           <div className="space-y-4 text-body text-brand-gray">
             <p>
-              We service a <strong>15-mile radius around McKinney (75002)</strong>, which covers Allen, Plano, McKinney, Frisco, and surrounding communities.
+              We service a <strong>15-mile radius around Allen (75002)</strong>, which covers Allen, Plano, McKinney, Frisco, and surrounding communities.
             </p>
             <p>
               All areas receive the same professional standards and service quality. We offer same-week scheduling and flexible time slots to fit your busy schedule.
