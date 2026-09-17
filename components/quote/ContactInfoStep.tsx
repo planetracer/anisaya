@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { calculateQuotePrice } from '@/lib/calculatePrice';
 import type { QuoteData } from '../QuoteForm';
 
 interface ContactInfoStepProps {
@@ -33,6 +34,9 @@ export default function ContactInfoStep({ data, onChange, onBack }: ContactInfoS
 
     setIsSubmitting(true);
     try {
+      // Calculate estimated price
+      const estimatedPrice = calculateQuotePrice(data);
+
       // Send contact info to Discord
       await fetch('/api/send-quote-request', {
         method: 'POST',
@@ -42,6 +46,7 @@ export default function ContactInfoStep({ data, onChange, onBack }: ContactInfoS
           firstName,
           email,
           phone: phone.replace(/\D/g, ''),
+          price: estimatedPrice,
         }),
       });
     } catch (error) {
