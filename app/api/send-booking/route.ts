@@ -26,12 +26,12 @@ export async function POST(request: NextRequest) {
             { name: 'Zip Code', value: bookingData.zipCode || 'N/A', inline: true },
             {
               name: 'Home Details',
-              value: `${bookingData.homeDetails?.squareFootage || 'N/A'} sqft | ${bookingData.homeDetails?.bedrooms || '0'} bed | ${bookingData.homeDetails?.fullBathrooms || '0'} bath`,
+              value: `${bookingData.homeDetails?.squareFootage || 'N/A'} sqft | ${bookingData.homeDetails?.bedrooms || '0'} bed | ${bookingData.homeDetails?.fullBathrooms || '0'} bath | ${bookingData.homeDetails?.halfBathrooms || '0'} half bath | Pets: ${bookingData.homeDetails?.pets || 'none'}`,
               inline: false,
             },
             {
-              name: 'Service',
-              value: `${bookingData.cleaningType} (${bookingData.frequency})`,
+              name: 'Service & Frequency',
+              value: `${bookingData.cleaningType} - ${bookingData.frequency}`,
               inline: true,
             },
             { name: 'Price', value: `$${bookingData.price?.toFixed(2) || '0.00'}`, inline: true },
@@ -42,6 +42,19 @@ export async function POST(request: NextRequest) {
                 : 'Not scheduled yet',
               inline: false,
             },
+            ...(bookingData.addOns && bookingData.addOns.length > 0 ? [{
+              name: 'Add-ons',
+              value: bookingData.addOns.map((addon: string) => {
+                const labels: Record<string, string> = {
+                  'windows': 'Inside windows (+$30)',
+                  'carpet': 'Carpet cleaning (+$50)',
+                  'oven': 'Oven cleaning (+$25)',
+                  'fridge': 'Fridge cleaning (+$20)',
+                };
+                return labels[addon] || addon;
+              }).join(', '),
+              inline: false,
+            }] : []),
           ],
           timestamp: new Date().toISOString(),
         },

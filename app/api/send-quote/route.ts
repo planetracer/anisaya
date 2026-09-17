@@ -24,15 +24,28 @@ export async function POST(request: NextRequest) {
             { name: 'Zip Code', value: quoteData.zipCode || 'N/A', inline: true },
             {
               name: 'Home Details',
-              value: `${quoteData.homeDetails?.squareFootage || 'N/A'} sqft | ${quoteData.homeDetails?.bedrooms || '0'} bed | ${quoteData.homeDetails?.fullBathrooms || '0'} bath`,
+              value: `${quoteData.homeDetails?.squareFootage || 'N/A'} sqft | ${quoteData.homeDetails?.bedrooms || '0'} bed | ${quoteData.homeDetails?.fullBathrooms || '0'} bath | ${quoteData.homeDetails?.halfBathrooms || '0'} half bath | Pets: ${quoteData.homeDetails?.pets || 'none'}`,
               inline: false,
             },
             {
-              name: 'Service',
-              value: `${quoteData.cleaningType} (${quoteData.frequency})`,
+              name: 'Service & Frequency',
+              value: `${quoteData.cleaningType} - ${quoteData.frequency}`,
               inline: true,
             },
             { name: 'Quote Price', value: `$${quoteData.price?.toFixed(2) || '0.00'}`, inline: true },
+            ...(quoteData.addOns && quoteData.addOns.length > 0 ? [{
+              name: 'Add-ons',
+              value: quoteData.addOns.map((addon: string) => {
+                const labels: Record<string, string> = {
+                  'windows': 'Inside windows (+$30)',
+                  'carpet': 'Carpet cleaning (+$50)',
+                  'oven': 'Oven cleaning (+$25)',
+                  'fridge': 'Fridge cleaning (+$20)',
+                };
+                return labels[addon] || addon;
+              }).join(', '),
+              inline: false,
+            }] : []),
           ],
           timestamp: new Date().toISOString(),
         },

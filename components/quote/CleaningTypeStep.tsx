@@ -143,22 +143,30 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
         </label>
         <div className="space-y-2">
           {[
-            { id: 'windows', label: 'Inside windows (+$30)' },
-            { id: 'carpet', label: 'Carpet cleaning (+$50)' },
-            { id: 'oven', label: 'Oven cleaning (+$25)' },
-            { id: 'fridge', label: 'Fridge cleaning (+$20)' },
-          ].map((addon) => (
-            <label key={addon.id} className="flex items-center">
-              <input
-                type="checkbox"
-                checked={addOns.includes(addon.id)}
-                onChange={() => handleAddOnChange(addon.id)}
-                className="mr-3 w-5 h-5"
-              />
-              <span className="text-brand-ink">{addon.label}</span>
-            </label>
-          ))}
+            { id: 'windows', label: 'Inside windows (+$30)', showFor: ['standard', 'deep', 'moveInMoveOut'] },
+            { id: 'carpet', label: 'Carpet cleaning (+$50)', showFor: ['standard', 'deep'] },
+            { id: 'oven', label: 'Oven cleaning (+$25)', showFor: ['standard', 'deep'] },
+            { id: 'fridge', label: 'Fridge cleaning (+$20)', showFor: ['standard', 'deep'] },
+          ].map((addon) => {
+            const shouldShow = addon.showFor.includes(cleaningType as any);
+            return shouldShow ? (
+              <label key={addon.id} className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={addOns.includes(addon.id)}
+                  onChange={() => handleAddOnChange(addon.id)}
+                  className="mr-3 w-5 h-5"
+                />
+                <span className="text-brand-ink">{addon.label}</span>
+              </label>
+            ) : null;
+          })}
         </div>
+        {cleaningType === 'moveInMoveOut' && (
+          <p className="text-small text-brand-gray mt-3">
+            ✓ Deep cleaning of oven and fridge already included in move-in/move-out cleaning
+          </p>
+        )}
       </div>
 
       <div className="flex gap-4">
