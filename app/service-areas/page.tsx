@@ -7,7 +7,7 @@ export default function ServiceAreasPage() {
       city: 'Allen',
       description: 'Professional house cleaning throughout Allen, TX',
       neighborhoods: 'Heritage Distillery, Watters Creek, Old Town Allen, Auburn Hills',
-      highlights: 'Serving both new and established neighborhoods with flexible scheduling',
+      highlights: 'Our home base - serving both new and established neighborhoods',
     },
     {
       city: 'Plano',
@@ -26,6 +26,54 @@ export default function ServiceAreasPage() {
       description: 'Expert cleaning for Frisco residents',
       neighborhoods: 'The Columns, Coppell Ranch, Star Canyon, Prairie Grass Ranch',
       highlights: 'Specialized service for upscale homes and active families',
+    },
+    {
+      city: 'Wylie',
+      description: 'Professional cleaning services throughout Wylie',
+      neighborhoods: 'Downtown Wylie, Lakepoint, Creekside',
+      highlights: 'Growing community with personalized service',
+    },
+    {
+      city: 'Prosper',
+      description: 'Quality home cleaning in Prosper, TX',
+      neighborhoods: 'Downtown Prosper, Northlake',
+      highlights: 'Quick scheduling for northern communities',
+    },
+    {
+      city: 'Lucas',
+      description: 'Expert cleaning for Lucas residents',
+      neighborhoods: 'Lucas Ranch, Lucas Town Center',
+      highlights: 'Serving the Lucas community with pride',
+    },
+    {
+      city: 'Murphy',
+      description: 'Professional cleaning services in Murphy',
+      neighborhoods: 'Murphy Ranch, Heritage area',
+      highlights: 'Flexible scheduling for busy families',
+    },
+    {
+      city: 'Celina',
+      description: 'Quality home cleaning in Celina, TX',
+      neighborhoods: 'Celina city limits',
+      highlights: 'Personalized service for growing community',
+    },
+    {
+      city: 'Fairview',
+      description: 'Expert cleaning for Fairview residents',
+      neighborhoods: 'Fairview area',
+      highlights: 'Small town service with big-city quality',
+    },
+    {
+      city: 'Sachse',
+      description: 'Professional cleaning throughout Sachse',
+      neighborhoods: 'Sachse community',
+      highlights: 'Reliable service for eastern areas',
+    },
+    {
+      city: 'Carrollton',
+      description: 'Quality home cleaning in Carrollton',
+      neighborhoods: 'Carrollton areas',
+      highlights: 'Expert service across the community',
     },
   ];
 
@@ -50,7 +98,7 @@ export default function ServiceAreasPage() {
       <section className="section bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-12">
-            We serve {BUSINESS_INFO.serviceArea.length} cities
+            We serve 12+ cities within 15 miles
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {areas.map((area) => (
@@ -87,7 +135,10 @@ export default function ServiceAreasPage() {
           </h2>
           <div className="space-y-4 text-body text-brand-gray">
             <p>
-              We service a <strong>15-mile radius around Allen (75002)</strong>, which covers Allen, Plano, McKinney, Frisco, and surrounding communities.
+              We service a <strong>15-mile radius around Allen (75002)</strong>, covering 12+ cities including:
+            </p>
+            <p className="text-small">
+              Allen • Plano • McKinney • Frisco • Wylie • Prosper • Lucas • Murphy • Celina • Fairview • Sachse • Carrollton • and more
             </p>
             <p>
               All areas receive the same professional standards and service quality. We offer same-week scheduling and flexible time slots to fit your busy schedule.
