@@ -130,7 +130,7 @@ export default function QuoteForm() {
             data={quoteData}
             onChange={(data) => {
               updateQuoteData(data);
-              setStep('booking');
+              setStep('price');
             }}
             onBack={() => setStep('cleaningType')}
           />
