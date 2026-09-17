@@ -51,8 +51,12 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="relative h-80 bg-gradient-to-br from-brand-lavender-mist to-brand-lilac-white rounded-[20px] flex items-center justify-center">
-            <div className="text-6xl">🏠</div>
+          <div className="relative h-80 bg-gradient-to-br from-brand-lavender-mist to-brand-lilac-white rounded-[20px] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop"
+              alt="Clean modern kitchen"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -62,13 +66,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { icon: '✓', label: 'Background-checked cleaners' },
-              { icon: '🛡️', label: 'Insured and bonded' },
-              { icon: '⏱️', label: '24-hour re-clean guarantee' },
-              { icon: '⭐', label: 'Google reviews' },
+              { icon: '✓', label: 'Background-checked cleaners', color: 'bg-brand-purple' },
+              { icon: '🛡', label: 'Insured and bonded', color: 'bg-brand-purple' },
+              { icon: '⏰', label: '24-hour re-clean guarantee', color: 'bg-brand-purple' },
+              { icon: '★', label: 'Google reviews', color: 'bg-brand-purple' },
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl mb-2">{item.icon}</div>
+                <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-3`}>
+                  {item.icon}
+                </div>
                 <p className="text-body font-semibold text-brand-ink">{item.label}</p>
               </div>
             ))}
@@ -89,7 +95,7 @@ export default function Home() {
               { num: '3', title: 'Come home to clean', desc: 'Enjoy your freshly cleaned home' },
             ].map((step, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 bg-brand-purple text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                <div className="w-20 h-20 bg-brand-purple text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-4">
                   {step.num}
                 </div>
                 <h3 className="font-fredoka text-h3-mobile md:text-h3 text-brand-purple mb-2">

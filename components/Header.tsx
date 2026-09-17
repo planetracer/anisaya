@@ -10,14 +10,17 @@ export default function Header() {
   return (
     <header className="sticky top-0 bg-white border-b border-brand-lavender-mist z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Bubble Design from Brand Guide */}
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="8" cy="8" r="4" fill="#5B4B9A"/>
-            <circle cx="18" cy="6" r="3" fill="#E58FB8" opacity="0.7"/>
-            <circle cx="24" cy="12" r="2.5" fill="#E58FB8"/>
-            <circle cx="14" cy="18" r="3.5" fill="#5B4B9A" opacity="0.8"/>
-            <circle cx="22" cy="22" r="2" fill="#7A6DB0"/>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            {/* Main purple bubble */}
+            <circle cx="12" cy="12" r="8" fill="#5B4B9A" stroke="#5B4B9A" strokeWidth="1"/>
+            {/* Small pink bubble */}
+            <circle cx="24" cy="8" r="5" fill="#E58FB8" opacity="0.9"/>
+            {/* Tiny pink accent */}
+            <circle cx="30" cy="16" r="3" fill="#E58FB8" opacity="0.7"/>
+            {/* Soft violet bubble */}
+            <circle cx="20" cy="26" r="6" fill="#7A6DB0" opacity="0.8"/>
           </svg>
           <div>
             <div className="text-lg font-fredoka font-bold text-brand-purple">
