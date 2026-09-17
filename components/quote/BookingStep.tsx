@@ -64,7 +64,9 @@ export default function BookingStep({ data, onChange, onBack }: BookingStepProps
     return `${displayHour}:${minutes} ${ampm}`;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
@@ -76,10 +78,34 @@ export default function BookingStep({ data, onChange, onBack }: BookingStepProps
       return;
     }
 
-    onChange({
-      preferredDate: selectedDate,
-      preferredTime: selectedTime,
-    });
+    setIsSubmitting(true);
+    try {
+      const bookingData = {
+        ...data,
+        preferredDate: selectedDate,
+        preferredTime: selectedTime,
+      };
+
+      const response = await fetch('/api/send-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (response.ok) {
+        alert(
+          `Thank you, ${data.firstName}! Your booking has been confirmed. We'll contact you at ${data.email} to confirm the appointment.`
+        );
+        window.location.href = '/';
+      } else {
+        alert('Error submitting booking. Please try again.');
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+      alert('Error submitting booking. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const availableDates = getAvailableDates();
@@ -191,9 +217,10 @@ export default function BookingStep({ data, onChange, onBack }: BookingStepProps
         </button>
         <button
           type="submit"
-          className="btn-primary flex-1"
+          disabled={isSubmitting}
+          className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Continue
+          {isSubmitting ? 'Confirming...' : 'Confirm booking'}
         </button>
       </div>
     </form>

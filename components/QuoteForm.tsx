@@ -66,8 +66,8 @@ export default function QuoteForm() {
     return serviceAreaZipCodes.includes(zip);
   };
 
-  const progressSteps = ['Zip Code', 'Home Details', 'Service', 'Contact', 'Date & Time', 'Price'];
-  const stepIndex = ['zipCode', 'homeDetails', 'cleaningType', 'contactInfo', 'booking', 'price'].indexOf(step);
+  const progressSteps = ['Zip Code', 'Home Details', 'Service', 'Contact', 'Quote', 'Schedule'];
+  const stepIndex = ['zipCode', 'homeDetails', 'cleaningType', 'contactInfo', 'price', 'booking'].indexOf(step);
 
   return (
     <div>
@@ -141,16 +141,15 @@ export default function QuoteForm() {
             data={quoteData}
             onChange={(data) => {
               updateQuoteData(data);
-              setStep('price');
             }}
-            onBack={() => setStep('contactInfo')}
+            onBack={() => setStep('price')}
           />
         )}
 
         {step === 'price' && (
           <PriceStep
             data={quoteData as QuoteData}
-            onBack={() => setStep('booking')}
+            onBack={() => setStep('contactInfo')}
             onChatOpen={() => setShowChatbot(true)}
           />
         )}
