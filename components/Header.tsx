@@ -11,11 +11,20 @@ export default function Header() {
     <header className="sticky top-0 bg-white border-b border-brand-lavender-mist z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <div className="text-2xl font-fredoka font-bold text-brand-purple">
-            anisaya
+        <Link href="/" className="flex-shrink-0 flex items-center gap-2">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="8" cy="8" r="4" fill="#5B4B9A"/>
+            <circle cx="18" cy="6" r="3" fill="#E58FB8" opacity="0.7"/>
+            <circle cx="24" cy="12" r="2.5" fill="#E58FB8"/>
+            <circle cx="14" cy="18" r="3.5" fill="#5B4B9A" opacity="0.8"/>
+            <circle cx="22" cy="22" r="2" fill="#7A6DB0"/>
+          </svg>
+          <div>
+            <div className="text-lg font-fredoka font-bold text-brand-purple">
+              anisaya
+            </div>
+            <div className="text-xs text-brand-violet leading-none">cleaning co.</div>
           </div>
-          <div className="text-xs text-brand-violet">cleaning co.</div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -24,10 +33,10 @@ export default function Header() {
             <button className="text-brand-ink hover:text-brand-purple transition-colors">
               Services
             </button>
-            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-lg p-2 mt-2 w-48">
-              <Link href="/services/standard-cleaning" className="block px-4 py-2 hover:bg-brand-lilac-white">Standard Cleaning</Link>
-              <Link href="/services/deep-cleaning" className="block px-4 py-2 hover:bg-brand-lilac-white">Deep Cleaning</Link>
-              <Link href="/services/move-in-move-out" className="block px-4 py-2 hover:bg-brand-lilac-white">Move-in / Move-out</Link>
+            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-2xl p-2 mt-2 w-48 z-50">
+              <Link href="/services/standard-cleaning" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Standard Cleaning</Link>
+              <Link href="/services/deep-cleaning" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Deep Cleaning</Link>
+              <Link href="/services/move-in-move-out" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Move-in / Move-out</Link>
             </div>
           </div>
 
@@ -35,11 +44,11 @@ export default function Header() {
             <button className="text-brand-ink hover:text-brand-purple transition-colors">
               Service Areas
             </button>
-            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-lg p-2 mt-2 w-40">
-              <Link href="/house-cleaning-allen-tx" className="block px-4 py-2 hover:bg-brand-lilac-white">Allen</Link>
-              <Link href="/house-cleaning-plano-tx" className="block px-4 py-2 hover:bg-brand-lilac-white">Plano</Link>
-              <Link href="/house-cleaning-mckinney-tx" className="block px-4 py-2 hover:bg-brand-lilac-white">McKinney</Link>
-              <Link href="/house-cleaning-frisco-tx" className="block px-4 py-2 hover:bg-brand-lilac-white">Frisco</Link>
+            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-2xl p-2 mt-2 w-40 z-50">
+              <Link href="/house-cleaning-allen-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Allen</Link>
+              <Link href="/house-cleaning-plano-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Plano</Link>
+              <Link href="/house-cleaning-mckinney-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">McKinney</Link>
+              <Link href="/house-cleaning-frisco-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Frisco</Link>
             </div>
           </div>
 
@@ -50,7 +59,7 @@ export default function Header() {
 
         {/* Desktop Right: Phone & CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a href={`tel:${BUSINESS_INFO.phone}`} className="text-brand-purple font-semibold hover:underline">
+          <a href={`tel:${BUSINESS_INFO.phone.replace(/\D/g, '')}`} className="text-brand-purple font-semibold hover:underline">
             {BUSINESS_INFO.phone}
           </a>
           <Link href="/quote" className="btn-primary">

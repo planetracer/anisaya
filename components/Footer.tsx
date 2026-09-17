@@ -69,10 +69,6 @@ export default function Footer() {
                 {BUSINESS_INFO.email}
               </a>
               <p className="text-brand-lavender-mist">{BUSINESS_INFO.hours}</p>
-              <div className="flex gap-4 mt-4">
-                <a href="#" className="text-brand-lavender-mist hover:text-white transition-colors">Instagram</a>
-                <a href="#" className="text-brand-lavender-mist hover:text-white transition-colors">Facebook</a>
-              </div>
             </div>
           </div>
         </div>

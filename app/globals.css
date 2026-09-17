@@ -27,12 +27,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Primary button */
 .btn-primary {
-  @apply bg-brand-purple text-white px-6 py-3 rounded-[12px] font-button text-button transition-colors hover:bg-brand-deep-purple;
+  @apply bg-brand-purple text-white px-6 py-3 rounded-[12px] text-button font-bold transition-colors hover:bg-brand-deep-purple;
 }
 
 /* Secondary button */
 .btn-secondary {
-  @apply bg-white text-brand-purple border-2 border-brand-purple px-6 py-3 rounded-[12px] font-button text-button transition-colors hover:bg-brand-lavender-mist;
+  @apply bg-white text-brand-purple border-2 border-brand-purple px-6 py-3 rounded-[12px] text-button font-bold transition-colors hover:bg-brand-lavender-mist;
 }
 
 /* Form field */

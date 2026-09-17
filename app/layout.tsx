@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PromoBar from '@/components/PromoBar';
+import Chatbot from '@/components/Chatbot';
 
 export const metadata: Metadata = {
   title: 'Anisaya Cleaning | House Cleaning in Allen, Plano, McKinney & Frisco',
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );

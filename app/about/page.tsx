@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BUSINESS_INFO } from '@/lib/settings';
 
 export default function AboutPage() {
   return (
@@ -14,7 +15,7 @@ export default function AboutPage() {
               Our story
             </h2>
             <p className="text-body text-brand-gray leading-relaxed">
-              [Add your story here about why you started Anisaya Cleaning and your mission]
+              {BUSINESS_INFO.ownerStory}
             </p>
             <div className="w-full h-64 bg-brand-lilac-white rounded-[20px] mt-6 flex items-center justify-center">
               <span className="text-6xl">📷</span>

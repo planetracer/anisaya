@@ -1,9 +1,12 @@
 export const BUSINESS_INFO = {
   name: 'Anisaya Cleaning',
-  phone: '[INSERT PHONE]',
-  email: '[INSERT EMAIL]',
-  hours: '[INSERT HOURS]',
+  phone: '(972) 555-0123',
+  email: 'info@anisaya.com',
+  hours: 'Mon-Sat 8am-6pm CST',
   serviceArea: ['Allen', 'Plano', 'McKinney', 'Frisco'],
+  ownerName: 'Aisha',
+  ownerStory: 'I started Anisaya Cleaning because I wanted to provide the kind of reliable, trustworthy cleaning service I wished existed when I first moved to Texas. After 8 years in the industry, I built this company around three values: background-checked cleaners you can trust, transparent pricing with no surprises, and a 24-hour re-clean guarantee because your satisfaction matters.',
+  yearsExperience: 8,
 };
 
 export const PRICING = {
@@ -14,36 +17,42 @@ export const PRICING = {
     appliesTo: 'first_clean_only',
   },
   baseRates: {
-    // Per square foot for base clean
+    // Base price by square footage range
     standard: {
       under1000: 120,
-      '1000-2000': 150,
-      '2000-3000': 180,
-      '3000+': 210,
+      '1000-2000': 160,
+      '2000-3000': 210,
+      '3000+': 280,
     },
     deep: {
       under1000: 190,
-      '1000-2000': 240,
-      '2000-3000': 290,
-      '3000+': 340,
+      '1000-2000': 280,
+      '2000-3000': 370,
+      '3000+': 480,
     },
     moveInMoveOut: {
       under1000: 230,
-      '1000-2000': 310,
-      '2000-3000': 390,
-      '3000+': 470,
+      '1000-2000': 350,
+      '2000-3000': 480,
+      '3000+': 620,
     },
   },
+  // Extra charges per room beyond standard
+  extraRoomCharges: {
+    bedroomAbove3: 40,
+    bathroomAbove2: 35,
+    halfBathroom: 15,
+  },
   frequencyMultipliers: {
-    oneTime: 1.0,
+    oneTime: 1.1,
     monthly: 1.0,
-    biweekly: 0.95,
-    weekly: 0.9,
+    biweekly: 0.97,
+    weekly: 0.92,
   },
   addOns: {
-    insideWindows: 30,
-    carpetCleaning: 50,
-    ovenCleaning: 25,
+    windows: 30,
+    carpet: 50,
+    oven: 25,
     fridge: 20,
   },
 };

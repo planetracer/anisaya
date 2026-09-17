@@ -15,38 +15,32 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
   const [appliedPromo, setAppliedPromo] = useState('');
 
   // Calculate base price
-  const sqftRanges = {
-    under1000: 1,
-    '1000-2000': 2,
-    '2000-3000': 3,
-    '3000+': 4,
-  };
-
   const pricingKey = data.squareFootage as keyof typeof PRICING.baseRates.standard;
   const cleaningTypeKey = data.cleaningType as 'standard' | 'deep' | 'moveInMoveOut';
 
   let basePrice = PRICING.baseRates[cleaningTypeKey][pricingKey] || 150;
 
-  // Apply frequency multiplier
-  const frequencyMultiplier = PRICING.frequencyMultipliers[data.frequency as keyof typeof PRICING.frequencyMultipliers] || 1;
-  let price = basePrice * frequencyMultiplier;
-
-  // Add extra room charges (simplified)
+  // Add extra room charges
   const bedrooms = parseInt(data.bedrooms) || 0;
   const fullBaths = parseInt(data.fullBathrooms) || 0;
   const halfBaths = parseInt(data.halfBathrooms) || 0;
 
-  if (bedrooms > 3) price += (bedrooms - 3) * 15;
-  if (fullBaths > 2) price += (fullBaths - 2) * 20;
-  if (halfBaths > 0) price += halfBaths * 10;
+  if (bedrooms > 3) {
+    basePrice += (bedrooms - 3) * PRICING.extraRoomCharges.bedroomAbove3;
+  }
+  if (fullBaths > 2) {
+    basePrice += (fullBaths - 2) * PRICING.extraRoomCharges.bathroomAbove2;
+  }
+  if (halfBaths > 0) {
+    basePrice += halfBaths * PRICING.extraRoomCharges.halfBathroom;
+  }
+
+  // Apply frequency multiplier
+  const frequencyMultiplier = PRICING.frequencyMultipliers[data.frequency as keyof typeof PRICING.frequencyMultipliers] || 1;
+  let price = basePrice * frequencyMultiplier;
 
   // Add-ons
-  const addOnPrices = {
-    windows: 30,
-    carpet: 50,
-    oven: 25,
-    fridge: 20,
-  };
+  const addOnPrices = PRICING.addOns;
 
   let addOnTotal = 0;
   (data.addOns || []).forEach((addon) => {
@@ -58,18 +52,20 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
   // Round to nearest $5
   price = Math.round(price / 5) * 5;
 
-  // Calculate tax
-  const taxAmount = price * PRICING.salesTax;
-  const totalWithTax = price + taxAmount;
-
   // Apply promo
   let discountedPrice = price;
   let oldPrice = price;
+  let finalPrice = price;
 
   if (appliedPromo === 'ANI25' || promoCode.toUpperCase() === 'ANI25') {
-    discountedPrice = price * (1 - PRICING.promo.discount);
+    discountedPrice = Math.round((price * (1 - PRICING.promo.discount)) / 5) * 5;
     oldPrice = price;
+    finalPrice = discountedPrice;
   }
+
+  // Calculate tax on final price
+  const taxAmount = finalPrice * PRICING.salesTax;
+  const totalWithTax = finalPrice + taxAmount;
 
   const handleApplyPromo = (code: string) => {
     if (code.toUpperCase() === 'ANI25') {
@@ -94,9 +90,9 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
       <div className="card mb-6 bg-gradient-to-br from-brand-lilac-white to-white border-brand-purple border-2">
         <div className="flex items-baseline gap-2 mb-4">
           <span className="text-5xl font-fredoka font-bold text-brand-purple">
-            ${discountedPrice.toFixed(0)}
+            ${finalPrice.toFixed(0)}
           </span>
-          {appliedPromo && oldPrice !== discountedPrice && (
+          {appliedPromo && oldPrice !== finalPrice && (
             <span className="text-xl line-through text-brand-gray">${oldPrice.toFixed(0)}</span>
           )}
         </div>

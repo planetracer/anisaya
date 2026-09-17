@@ -68,7 +68,7 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
         {services.map((service) => (
           <label
             key={service.id}
-            className={`card cursor-pointer border-2 transition-all ${
+            className={`card cursor-pointer border-2 transition-all p-4 flex items-start gap-3 ${
               cleaningType === service.id
                 ? 'border-brand-purple bg-brand-lilac-white'
                 : 'border-brand-lavender-mist'
@@ -80,11 +80,13 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
               value={service.id}
               checked={cleaningType === service.id as any}
               onChange={(e) => setCleaningType(e.target.value as any)}
-              className="mr-4"
+              className="mt-1 flex-shrink-0"
             />
-            <span className="font-fredoka font-semibold text-brand-purple">{service.name}</span>
-            <p className="text-brand-gray text-small mt-1">{service.description}</p>
-            <p className="text-brand-violet text-small mt-2">Best for: {service.best}</p>
+            <div className="flex-1">
+              <span className="font-fredoka font-semibold text-brand-purple block">{service.name}</span>
+              <p className="text-brand-gray text-small mt-1">{service.description}</p>
+              <p className="text-brand-violet text-small mt-2">Best for: {service.best}</p>
+            </div>
           </label>
         ))}
       </div>
