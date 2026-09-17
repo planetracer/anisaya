@@ -567,7 +567,7 @@ export default function StandardCleaningPage() {
                 <div className="text-3xl flex-shrink-0">✓</div>
                 <div>
                   <p className="font-semibold text-brand-ink mb-2">Promo code for new clients</p>
-                  <p className="text-body text-brand-gray">First-time customers get $25 off with code ANI25. Seriously!</p>
+                  <p className="text-body text-brand-gray">First-time customers get $25 off with code ANI25 through end of year. Seriously!</p>
                 </div>
               </div>
             </div>
