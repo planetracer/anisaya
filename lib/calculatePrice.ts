@@ -15,9 +15,9 @@ export function calculateQuotePrice(quoteData: {
   let basePrice = PRICING.baseRates[cleaningTypeKey][pricingKey] || 150;
 
   // Add extra room charges
-  const bedrooms = parseInt(quoteData.bedrooms) || 0;
-  const fullBaths = parseInt(quoteData.fullBathrooms) || 0;
-  const halfBaths = parseInt(quoteData.halfBathrooms) || 0;
+  const bedrooms = parseInt(quoteData.bedrooms || '0') || 0;
+  const fullBaths = parseInt(quoteData.fullBathrooms || '0') || 0;
+  const halfBaths = parseInt(quoteData.halfBathrooms || '0') || 0;
 
   if (bedrooms > 3) {
     basePrice += (bedrooms - 3) * PRICING.extraRoomCharges.bedroomAbove3;
