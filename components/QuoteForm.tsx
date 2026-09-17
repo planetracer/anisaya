@@ -157,7 +157,7 @@ export default function QuoteForm() {
         )}
       </div>
 
-      {showChatbot && <Chatbot />}
+      {showChatbot && <Chatbot initialOpen={true} />}
     </div>
   );
 }

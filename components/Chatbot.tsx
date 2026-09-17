@@ -25,8 +25,12 @@ interface ChatbotInquiry {
   timestamp: Date;
 }
 
-export default function Chatbot() {
-  const [open, setOpen] = useState(false);
+interface ChatbotProps {
+  initialOpen?: boolean;
+}
+
+export default function Chatbot({ initialOpen = false }: ChatbotProps) {
+  const [open, setOpen] = useState(initialOpen);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
