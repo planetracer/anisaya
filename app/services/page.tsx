@@ -69,11 +69,34 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Explanation */}
+      <section className="section bg-white">
+        <div className="max-w-2xl mx-auto px-6">
+          <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-6 text-center">
+            Understanding Each Service
+          </h2>
+          <div className="space-y-6 text-body text-brand-gray">
+            <div className="bg-brand-lilac-white rounded-[20px] p-6">
+              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Standard Cleaning</h3>
+              <p>A complete, professional cleaning of your entire home. Perfect for regular maintenance and keeping your space fresh week to week. We clean everything you see and touch.</p>
+            </div>
+            <div className="bg-brand-lilac-white rounded-[20px] p-6">
+              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Deep Cleaning</h3>
+              <p>All of Standard, plus interior details like inside appliances, baseboards, ceiling fans, window tracks, and grout scrubbing. Best for homes needing a thorough refresh or moving in.</p>
+            </div>
+            <div className="bg-brand-lilac-white rounded-[20px] p-6">
+              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Move-in / Move-out</h3>
+              <p>Everything in Deep, plus inside closets, behind furniture, wall mark cleaning, and every cabinet interior. For empty homes requiring complete turnover before new occupants.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Detailed Comparison */}
       <section className="section bg-brand-lilac-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-8 text-center">
-            What's Included
+            Complete Service Details
           </h2>
 
           {/* Desktop Table */}

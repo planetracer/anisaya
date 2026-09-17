@@ -7,21 +7,29 @@ export default function ServiceAreasPage() {
       city: 'Allen',
       description: 'Professional house cleaning throughout Allen, TX',
       zipCodes: '75013, 75014',
+      neighborhoods: 'Heritage Distillery, Watters Creek, Old Town Allen, Auburn Hills',
+      highlights: 'Serving both new and established neighborhoods with flexible scheduling',
     },
     {
       city: 'Plano',
       description: 'Trusted cleaning services in Plano, TX',
       zipCodes: '75074, 75075',
+      neighborhoods: 'Downtown Plano, Park Cities, Spring Creek, Lakeside',
+      highlights: 'Expert service for all home sizes from townhomes to large estates',
     },
     {
       city: 'McKinney',
       description: 'Quality home cleaning in McKinney, TX',
       zipCodes: '75001, 75002',
+      neighborhoods: 'Old Town McKinney, Adriatica, The Highlands, Stonebridge',
+      highlights: 'Same-day booking available for most requests',
     },
     {
       city: 'Frisco',
       description: 'Expert cleaning for Frisco residents',
       zipCodes: '75003',
+      neighborhoods: 'The Columns, Coppell Ranch, Star Canyon, Prairie Grass Ranch',
+      highlights: 'Specialized service for upscale homes and active families',
     },
   ];
 
@@ -48,11 +56,23 @@ export default function ServiceAreasPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {areas.map((area) => (
               <div key={area.city} className="card border-l-4 border-l-brand-purple">
-                <h3 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-2">
+                <h3 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-3">
                   {area.city}
                 </h3>
                 <p className="text-body text-brand-gray mb-4">{area.description}</p>
-                <p className="text-small text-brand-gray mb-6">Zip codes: {area.zipCodes}</p>
+
+                <div className="mb-4">
+                  <p className="text-small font-semibold text-brand-purple mb-1">Popular Neighborhoods:</p>
+                  <p className="text-small text-brand-gray">{area.neighborhoods}</p>
+                </div>
+
+                <div className="mb-6">
+                  <p className="text-small font-semibold text-brand-purple mb-1">Why choose Anisaya in {area.city}:</p>
+                  <p className="text-small text-brand-gray">✓ {area.highlights}</p>
+                </div>
+
+                <p className="text-small text-brand-gray mb-6">Service zip codes: {area.zipCodes}</p>
+
                 <Link href="/quote" className="text-brand-purple hover:underline font-semibold">
                   Get quote for {area.city} →
                 </Link>
