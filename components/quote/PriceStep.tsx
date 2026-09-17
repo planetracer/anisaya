@@ -144,6 +144,24 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
         </div>
       )}
 
+      {/* Booking Details */}
+      {data.preferredDate && data.preferredTime && (
+        <div className="bg-brand-pink bg-opacity-10 border border-brand-pink rounded-lg p-4 mb-6">
+          <p className="text-small font-semibold text-brand-ink mb-2">Your appointment:</p>
+          <p className="text-small text-brand-ink">
+            {new Date(data.preferredDate + 'T00:00:00').toLocaleDateString('en-US', {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
+            })}{' '}
+            at {data.preferredTime}
+          </p>
+          <p className="text-xs text-brand-gray mt-2">
+            Our cleaner will confirm 24 hours before your appointment
+          </p>
+        </div>
+      )}
+
       {/* What's Included */}
       <details className="mb-6 cursor-pointer">
         <summary className="text-small font-semibold text-brand-purple hover:text-brand-ink transition-colors">
@@ -176,7 +194,7 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
       {/* Actions */}
       <div className="flex flex-col gap-3 mb-6">
         <button className="btn-primary w-full">
-          Pick my date
+          Confirm booking
         </button>
         <button className="btn-secondary w-full">
           Chat with us

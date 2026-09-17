@@ -3,7 +3,7 @@ export const BUSINESS_INFO = {
   phone: '(469) 653-4650',
   email: 'info@anisaya.com',
   hours: 'Mon-Sat 8am-6pm CST',
-  serviceArea: ['Allen', 'Plano', 'McKinney', 'Frisco'],
+  serviceArea: ['Allen', 'Plano', 'McKinney', 'Frisco', 'Wylie', 'Prosper', 'Lucas', 'Murphy', 'Celina', 'Fairview', 'Sachse', 'Carrollton'],
   ownerName: 'Aisha',
   ownerStory: 'I started Anisaya Cleaning because I wanted to provide the kind of reliable, trustworthy cleaning service I wished existed when I first moved to Texas. After 8 years in the industry, I built this company around three values: background-checked cleaners you can trust, transparent pricing with no surprises, and a 24-hour re-clean guarantee because your satisfaction matters.',
   yearsExperience: 8,

@@ -6,6 +6,7 @@ import ZipCodeStep from './quote/ZipCodeStep';
 import HomeDetailsStep from './quote/HomeDetailsStep';
 import CleaningTypeStep from './quote/CleaningTypeStep';
 import ContactInfoStep from './quote/ContactInfoStep';
+import BookingStep from './quote/BookingStep';
 import PriceStep from './quote/PriceStep';
 
 export type QuoteData = {
@@ -22,14 +23,39 @@ export type QuoteData = {
   email: string;
   phone: string;
   promoCode: string;
+  preferredDate?: string;
+  preferredTime?: string;
 };
 
-type Step = 'zipCode' | 'homeDetails' | 'cleaningType' | 'contactInfo' | 'price' | 'booking';
+type Step = 'zipCode' | 'homeDetails' | 'cleaningType' | 'contactInfo' | 'booking' | 'price';
 
 export default function QuoteForm() {
   const [step, setStep] = useState<Step>('zipCode');
   const [quoteData, setQuoteData] = useState<Partial<QuoteData>>({});
-  const [serviceAreaZipCodes] = useState(['75013', '75074', '75075', '75001', '75002', '75003']);
+  const [serviceAreaZipCodes] = useState([
+    // Allen & Lucas
+    '75002', '75013',
+    // Plano
+    '75074', '75075', '75093',
+    // McKinney
+    '75071', '75072',
+    // Frisco
+    '75033', '75035',
+    // Wylie
+    '75098',
+    // Prosper
+    '75078',
+    // Murphy
+    '75094',
+    // Celina
+    '75009',
+    // Fairview
+    '75069',
+    // Sachse
+    '75048',
+    // Carrollton
+    '75006', '75007', '75010',
+  ]);
 
   const updateQuoteData = (data: Partial<QuoteData>) => {
     setQuoteData((prev) => ({ ...prev, ...data }));
@@ -39,8 +65,8 @@ export default function QuoteForm() {
     return serviceAreaZipCodes.includes(zip);
   };
 
-  const progressSteps = ['Zip Code', 'Home Details', 'Service', 'Contact', 'Price'];
-  const stepIndex = ['zipCode', 'homeDetails', 'cleaningType', 'contactInfo', 'price'].indexOf(step);
+  const progressSteps = ['Zip Code', 'Home Details', 'Service', 'Contact', 'Date & Time', 'Price'];
+  const stepIndex = ['zipCode', 'homeDetails', 'cleaningType', 'contactInfo', 'booking', 'price'].indexOf(step);
 
   return (
     <div>
@@ -103,16 +129,27 @@ export default function QuoteForm() {
             data={quoteData}
             onChange={(data) => {
               updateQuoteData(data);
-              setStep('price');
+              setStep('booking');
             }}
             onBack={() => setStep('cleaningType')}
+          />
+        )}
+
+        {step === 'booking' && (
+          <BookingStep
+            data={quoteData}
+            onChange={(data) => {
+              updateQuoteData(data);
+              setStep('price');
+            }}
+            onBack={() => setStep('contactInfo')}
           />
         )}
 
         {step === 'price' && (
           <PriceStep
             data={quoteData as QuoteData}
-            onBack={() => setStep('contactInfo')}
+            onBack={() => setStep('booking')}
           />
         )}
       </div>
