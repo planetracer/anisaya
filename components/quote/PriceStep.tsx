@@ -203,41 +203,6 @@ export default function PriceStep({ data, onBack, onBookNow, onChatOpen }: Price
           Book now
         </button>
         <button
-          onClick={async () => {
-            try {
-              const response = await fetch('/api/send-quote', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  firstName: data.firstName,
-                  email: data.email,
-                  phone: data.phone,
-                  zipCode: data.zipCode,
-                  homeDetails: {
-                    squareFootage: data.squareFootage,
-                    bedrooms: data.bedrooms,
-                    fullBathrooms: data.fullBathrooms,
-                    halfBathrooms: data.halfBathrooms,
-                    pets: data.pets,
-                  },
-                  cleaningType: data.cleaningType,
-                  frequency: data.frequency,
-                  addOns: data.addOns,
-                  price: totalWithTax,
-                }),
-              });
-              if (response.ok) {
-                window.location.href = '/quote-sent';
-              }
-            } catch (error) {
-              alert('Error sending quote request. Please try again.');
-            }
-          }}
-          className="btn-secondary w-full"
-        >
-          Send quote request
-        </button>
-        <button
           onClick={onChatOpen}
           className="text-small text-brand-purple hover:underline font-semibold text-center w-full"
         >

@@ -15,8 +15,9 @@ export default function ContactInfoStep({ data, onChange, onBack }: ContactInfoS
   const [phone, setPhone] = useState(data.phone || '');
   const [agreed, setAgreed] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
@@ -30,11 +31,29 @@ export default function ContactInfoStep({ data, onChange, onBack }: ContactInfoS
       return;
     }
 
-    onChange({
-      firstName,
-      email,
-      phone: phone.replace(/\D/g, ''),
-    });
+    setIsSubmitting(true);
+    try {
+      // Send contact info to Discord
+      await fetch('/api/send-quote-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          firstName,
+          email,
+          phone: phone.replace(/\D/g, ''),
+        }),
+      });
+    } catch (error) {
+      console.error('Error sending quote request:', error);
+    } finally {
+      setIsSubmitting(false);
+      onChange({
+        firstName,
+        email,
+        phone: phone.replace(/\D/g, ''),
+      });
+    }
   };
 
   return (
@@ -130,9 +149,10 @@ export default function ContactInfoStep({ data, onChange, onBack }: ContactInfoS
         </button>
         <button
           type="submit"
-          className="btn-primary flex-1"
+          disabled={isSubmitting}
+          className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Show my price
+          {isSubmitting ? 'Loading...' : 'Show my price'}
         </button>
       </div>
     </form>
