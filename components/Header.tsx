@@ -29,28 +29,8 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <div className="relative group">
-            <button className="text-brand-ink hover:text-brand-purple transition-colors">
-              Services
-            </button>
-            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-2xl p-2 mt-2 w-48 z-50">
-              <Link href="/services/standard-cleaning" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Standard Cleaning</Link>
-              <Link href="/services/deep-cleaning" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Deep Cleaning</Link>
-              <Link href="/services/move-in-move-out" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Move-in / Move-out</Link>
-            </div>
-          </div>
-
-          <div className="relative group">
-            <button className="text-brand-ink hover:text-brand-purple transition-colors">
-              Service Areas
-            </button>
-            <div className="absolute hidden group-hover:block bg-white border border-brand-lavender-mist rounded-lg shadow-2xl p-2 mt-2 w-40 z-50">
-              <Link href="/house-cleaning-allen-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Allen</Link>
-              <Link href="/house-cleaning-plano-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Plano</Link>
-              <Link href="/house-cleaning-mckinney-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">McKinney</Link>
-              <Link href="/house-cleaning-frisco-tx" className="block px-4 py-3 hover:bg-brand-lilac-white rounded">Frisco</Link>
-            </div>
-          </div>
+          <Link href="/services" className="text-brand-ink hover:text-brand-purple transition-colors">Services</Link>
+          <Link href="/service-areas" className="text-brand-ink hover:text-brand-purple transition-colors">Service Areas</Link>
 
           <Link href="/about" className="text-brand-ink hover:text-brand-purple transition-colors">About</Link>
           <Link href="/faq" className="text-brand-ink hover:text-brand-purple transition-colors">FAQ</Link>
@@ -83,6 +63,7 @@ export default function Header() {
         <nav className="md:hidden bg-brand-lilac-white p-6 border-t border-brand-lavender-mist">
           <div className="space-y-4">
             <Link href="/services" className="block text-brand-ink hover:text-brand-purple">Services</Link>
+            <Link href="/service-areas" className="block text-brand-ink hover:text-brand-purple">Service Areas</Link>
             <Link href="/about" className="block text-brand-ink hover:text-brand-purple">About</Link>
             <Link href="/faq" className="block text-brand-ink hover:text-brand-purple">FAQ</Link>
             <Link href="/careers" className="block text-brand-ink hover:text-brand-purple">Careers</Link>
