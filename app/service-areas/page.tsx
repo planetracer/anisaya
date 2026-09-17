@@ -133,15 +133,19 @@ export default function ServiceAreasPage() {
           <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-4">
             Our Service Radius
           </h2>
-          <div className="space-y-4 text-body text-brand-gray">
+          <div className="space-y-6 text-body text-brand-gray">
             <p>
-              We service a <strong>15-mile radius around Allen (75002)</strong>, covering 12+ cities including:
+              We service a <strong>15-mile radius around Allen (75002)</strong>, covering 12+ cities:
             </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {['Allen', 'Plano', 'McKinney', 'Frisco', 'Wylie', 'Prosper', 'Lucas', 'Murphy', 'Celina', 'Fairview', 'Sachse', 'Carrollton'].map((city) => (
+                <div key={city} className="text-small bg-white border border-brand-lavender-mist rounded-lg p-3 text-center font-semibold text-brand-purple">
+                  {city}
+                </div>
+              ))}
+            </div>
             <p className="text-small">
-              Allen • Plano • McKinney • Frisco • Wylie • Prosper • Lucas • Murphy • Celina • Fairview • Sachse • Carrollton • and more
-            </p>
-            <p>
-              All areas receive the same professional standards and service quality. We offer same-week scheduling and flexible time slots to fit your busy schedule.
+              All areas receive the same professional standards and service quality. Same-week scheduling and flexible time slots available.
             </p>
             <p>
               <strong>Not sure if we cover your address?</strong> Simply enter your zip code in our instant quote form and we'll confirm service availability right away.
