@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const message = {
       embeds: [
         {
-          title: '📅 New Booking Request',
+          title: '✅ Booking Confirmed',
           color: 0x8b5cf6, // purple
           fields: [
             { name: 'Name', value: bookingData.firstName || 'N/A', inline: true },
