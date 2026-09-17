@@ -13,7 +13,7 @@ export const PRICING = {
   salesTax: 0.0825,
   promo: {
     code: 'ANI25',
-    discount: 0.25,
+    discountAmount: 25,
     appliesTo: 'first_clean_only',
   },
   baseRates: {

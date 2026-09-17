@@ -60,7 +60,7 @@ export default function PriceStep({ data, onBack, onBookNow, onChatOpen }: Price
   let finalPrice = price;
 
   if (appliedPromo === 'ANI25' || promoCode.toUpperCase() === 'ANI25') {
-    discountedPrice = Math.round((price * (1 - PRICING.promo.discount)) / 5) * 5;
+    discountedPrice = Math.max(0, price - (PRICING.promo.discountAmount || 0));
     oldPrice = price;
     finalPrice = discountedPrice;
   }
