@@ -11,7 +11,7 @@ export default function PromoBar() {
     <div className="bg-brand-lavender-mist text-brand-ink text-center py-3 px-4">
       <div className="flex items-center justify-center gap-4 max-w-6xl mx-auto">
         <span className="text-sm md:text-base">
-          <strong>New clients:</strong> 25% off your first clean with code ANI25
+          <strong>New clients:</strong> $25 off any service with code ANI25
         </span>
         <button
           onClick={() => setClosed(true)}

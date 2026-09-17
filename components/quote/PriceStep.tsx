@@ -142,7 +142,7 @@ export default function PriceStep({ data, onBack, onBookNow, onChatOpen }: Price
       {appliedPromo === 'ANI25' && (
         <div className="bg-brand-pink bg-opacity-20 border border-brand-pink rounded-lg p-4 mb-6">
           <p className="text-small font-semibold text-brand-ink">
-            ✓ ANI25 applied - 25% off your first clean!
+            ✓ ANI25 applied - $25 off this service!
           </p>
         </div>
       )}

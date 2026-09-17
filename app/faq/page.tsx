@@ -5,7 +5,7 @@ export default function FAQPage() {
       questions: [
         { q: 'How is my price calculated?', a: 'We calculate based on your home size, number of rooms, and service type. Add-ons like carpet cleaning are priced separately.' },
         { q: 'Do I need to be home?', a: 'No, we just need a way to access your home. Most clients leave a key or unlock the door.' },
-        { q: 'How do I use the ANI25 promo code?', a: 'Enter ANI25 on the price screen during your quote for 25% off your first clean.' },
+        { q: 'How do I use the ANI25 promo code?', a: 'Enter ANI25 on the price screen during your quote for $25 off any service.' },
         { q: 'Is sales tax included?', a: 'No, sales tax is added at checkout. Your quote shows the pre-tax price.' },
       ],
     },

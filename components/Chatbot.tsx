@@ -53,7 +53,7 @@ export default function Chatbot({ initialOpen = false }: ChatbotProps) {
     schedule:
       "We offer cleaning Monday-Saturday, 8am-2pm. You can book through our instant quote form (60 seconds!) or I can help you schedule right here. What works better for you?",
     promo:
-      "New clients get 25% off with code ANI25 on your first clean! This applies to all service types. Want to get your quote now?",
+      "New clients get $25 off with code ANI25 on any service! This applies to all cleaning types. Want to get your quote now?",
     cancel:
       "No problem! You can reschedule or cancel through your booking confirmation email, or I can help you reschedule right now. What would work better?",
     coverage:

@@ -135,10 +135,10 @@ export default function Home() {
       <section className="section bg-brand-purple text-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-4">
-            New clients get 25% off
+            New clients get $25 off
           </h2>
           <p className="text-body mb-6">
-            Use code ANI25 in your instant quote
+            Use code ANI25 on any service
           </p>
           <Link href="/quote" className="btn-primary bg-white text-brand-purple hover:bg-brand-lilac-white">
             Get my instant quote
