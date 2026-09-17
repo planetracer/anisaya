@@ -8,7 +8,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 bg-white border-b border-brand-lavender-mist z-50">
+    <header className="fixed top-0 left-0 right-0 w-full bg-white border-b border-brand-lavender-mist z-50 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">

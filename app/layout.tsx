@@ -23,7 +23,7 @@ export default function RootLayout({
       <body>
         <PromoBar />
         <Header />
-        <main>{children}</main>
+        <main className="pt-20">{children}</main>
         <Footer />
         <Chatbot />
       </body>

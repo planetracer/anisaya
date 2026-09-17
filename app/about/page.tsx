@@ -17,8 +17,12 @@ export default function AboutPage() {
             <p className="text-body text-brand-gray leading-relaxed">
               {BUSINESS_INFO.ownerStory}
             </p>
-            <div className="w-full h-64 bg-brand-lilac-white rounded-[20px] mt-6 flex items-center justify-center">
-              <span className="text-6xl">📷</span>
+            <div className="relative w-full h-64 bg-gradient-to-br from-brand-lavender-mist to-brand-lilac-white rounded-[20px] mt-6 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop"
+                alt="Anisaya cleaning team"
+                className="w-full h-full object-cover brightness-95"
+              />
             </div>
           </section>
 
