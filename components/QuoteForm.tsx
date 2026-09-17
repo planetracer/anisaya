@@ -32,6 +32,7 @@ type Step = 'zipCode' | 'homeDetails' | 'cleaningType' | 'contactInfo' | 'bookin
 export default function QuoteForm() {
   const [step, setStep] = useState<Step>('zipCode');
   const [quoteData, setQuoteData] = useState<Partial<QuoteData>>({});
+  const [showChatbot, setShowChatbot] = useState(false);
   const [serviceAreaZipCodes] = useState([
     // Allen & Lucas
     '75002', '75013',
@@ -150,6 +151,7 @@ export default function QuoteForm() {
           <PriceStep
             data={quoteData as QuoteData}
             onBack={() => setStep('booking')}
+            onChatOpen={() => setShowChatbot(true)}
           />
         )}
       </div>

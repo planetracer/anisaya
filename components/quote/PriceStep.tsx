@@ -1,18 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { PRICING } from '@/lib/settings';
+import { PRICING, BUSINESS_INFO } from '@/lib/settings';
 import type { QuoteData } from '../QuoteForm';
 
 interface PriceStepProps {
   data: QuoteData;
   onBack: () => void;
+  onChatOpen?: () => void;
 }
 
-export default function PriceStep({ data, onBack }: PriceStepProps) {
+export default function PriceStep({ data, onBack, onChatOpen }: PriceStepProps) {
   const [promoCode, setPromoCode] = useState('');
   const [showPromoField, setShowPromoField] = useState(false);
   const [appliedPromo, setAppliedPromo] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Calculate base price
   const pricingKey = data.squareFootage as keyof typeof PRICING.baseRates.standard;
@@ -74,6 +76,56 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
       setShowPromoField(false);
     } else {
       setAppliedPromo('');
+    }
+  };
+
+  const handleConfirmBooking = async () => {
+    setIsSubmitting(true);
+    try {
+      const bookingData = {
+        firstName: data.firstName,
+        email: data.email,
+        phone: data.phone,
+        zipCode: data.zipCode,
+        homeDetails: {
+          squareFootage: data.squareFootage,
+          bedrooms: data.bedrooms,
+          fullBathrooms: data.fullBathrooms,
+          halfBathrooms: data.halfBathrooms,
+          pets: data.pets,
+        },
+        cleaningType: data.cleaningType,
+        frequency: data.frequency,
+        addOns: data.addOns,
+        price: totalWithTax,
+        promoCode: appliedPromo,
+        preferredDate: data.preferredDate,
+        preferredTime: data.preferredTime,
+        timestamp: new Date().toISOString(),
+      };
+
+      const response = await fetch('/api/send-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (response.ok) {
+        alert(
+          `Thank you, ${data.firstName}! Your booking request has been sent. We'll contact you at ${data.email} to confirm.`
+        );
+        // Reset or redirect
+        window.location.href = '/';
+      } else {
+        alert('There was an issue submitting your booking. Please try again or call us at ' + BUSINESS_INFO.phone);
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+      alert(
+        `Your booking info: ${data.firstName}, ${data.email}, ${data.phone}. Please call us at ${BUSINESS_INFO.phone} to confirm.`
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -193,10 +245,17 @@ export default function PriceStep({ data, onBack }: PriceStepProps) {
 
       {/* Actions */}
       <div className="flex flex-col gap-3 mb-6">
-        <button className="btn-primary w-full">
-          Confirm booking
+        <button
+          onClick={handleConfirmBooking}
+          disabled={isSubmitting}
+          className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? 'Submitting...' : 'Confirm booking'}
         </button>
-        <button className="btn-secondary w-full">
+        <button
+          onClick={onChatOpen}
+          className="btn-secondary w-full"
+        >
           Chat with us
         </button>
       </div>
