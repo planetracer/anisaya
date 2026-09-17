@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #231F33;
+  background: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply bg-brand-purple text-white px-6 py-3 rounded-[12px] font-button text-button transition-colors hover:bg-brand-deep-purple;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply bg-white text-brand-purple border-2 border-brand-purple px-6 py-3 rounded-[12px] font-button text-button transition-colors hover:bg-brand-lavender-mist;
+}
+
+/* Form field */
+.form-field {
+  @apply border border-brand-lavender-mist rounded-[12px] px-4 py-3 font-nunito text-body placeholder-brand-gray focus:border-brand-purple focus:outline-none transition-colors;
+}
+
+/* Card */
+.card {
+  @apply bg-white border border-brand-lavender-mist rounded-[20px] p-6;
+}
+
+/* Section spacing */
+.section {
+  @apply py-section-mobile md:py-section;
+}
