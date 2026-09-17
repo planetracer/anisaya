@@ -40,12 +40,13 @@ export default function CustomSelect({
         </label>
       )}
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="form-field w-full text-left flex items-center justify-between"
       >
-        <span>{value}</span>
+        <span>{value || 'Select...'}</span>
         <svg
-          className={`w-4 h-4 transition-transform ${
+          className={`w-4 h-4 transition-transform flex-shrink-0 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -62,16 +63,20 @@ export default function CustomSelect({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-brand-lavender-mist rounded-lg shadow-lg z-50">
-          {options.map((option) => (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-brand-lavender-mist rounded-lg shadow-2xl z-50 max-h-64 overflow-y-auto">
+          {options.map((option, idx) => (
             <button
               key={option}
-              onClick={() => {
+              type="button"
+              onMouseDown={(e) => {
+                e.preventDefault();
                 onChange(option);
                 setIsOpen(false);
               }}
-              className={`w-full text-left px-4 py-3 hover:bg-brand-lilac-white transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                value === option ? 'bg-brand-lilac-white font-semibold' : ''
+              className={`w-full text-left px-4 py-3 hover:bg-brand-lilac-white transition-colors ${
+                idx === 0 ? 'rounded-t-lg' : ''
+              } ${idx === options.length - 1 ? 'rounded-b-lg' : ''} ${
+                value === option ? 'bg-brand-lilac-white font-semibold text-brand-purple' : 'text-brand-ink'
               }`}
             >
               {option}
