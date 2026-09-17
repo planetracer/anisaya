@@ -1,41 +1,37 @@
 import Link from 'next/link';
 
 export default function ServicesPage() {
-  const services = [
-    {
-      name: 'Standard Cleaning',
-      price: 'Starting at $120',
-      description: 'Perfect for recurring clients',
-      href: '/services/standard-cleaning',
-      color: 'bg-brand-purple',
-      best_for: 'Recurring clients who want their home maintained regularly',
-      kitchen: ['Sink cleaned and shined', 'Counters wiped down', 'Appliance exteriors wiped', 'Floor vacuumed and mopped'],
-      bathrooms: ['Toilet cleaned and disinfected', 'Sink cleaned and shined', 'Shower/tub cleaned', 'Floor vacuumed and mopped'],
-      other: ['Dust all surfaces', 'Vacuum all bedrooms and living areas', 'Mop all hard floors', 'Empty trash'],
-    },
-    {
-      name: 'Deep Cleaning',
-      price: 'Starting at $190',
-      description: 'For first cleans and refreshes',
-      href: '/services/deep-cleaning',
-      color: 'bg-brand-pink',
-      best_for: 'Homes not cleaned in over a month or getting ready for guests',
-      kitchen: ['Everything in Standard, plus:', 'Cabinet fronts fully wiped', 'Inside oven cleaned', 'Inside fridge cleaned', 'Inside dishwasher cleaned', 'Grout scrubbed', 'Hard water spots removed'],
-      bathrooms: ['Everything in Standard, plus:', 'Grout scrubbed', 'Soap scum fully removed', 'Hard water spots removed', 'Inside cabinet drawers wiped'],
-      other: ['Baseboards hand-wiped', 'Ceiling fans fully dusted', 'Door frames wiped', 'Window sills and tracks cleaned'],
-    },
-    {
-      name: 'Move-in / Move-out',
-      price: 'Starting at $230',
-      description: 'Complete move day cleaning',
-      href: '/services/move-in-move-out',
-      color: 'bg-brand-violet',
-      best_for: 'Empty homes needing complete cleaning for moving day',
-      kitchen: ['Everything in Deep, plus:', 'Inside all cabinets and drawers', 'Wall marks spot-cleaned', 'Baseboards hand-wiped'],
-      bathrooms: ['Everything in Deep, plus:', 'Inside all vanity cabinets', 'All fixtures shine', 'Wall marks cleaned'],
-      other: ['Inside closets and shelves', 'Behind all furniture', 'Wall spots cleaned', 'All hard-to-reach areas'],
-    },
+  const tasks = [
+    { category: 'Kitchen', task: 'Kitchen counters, backsplash, sink', standard: '✓', deep: '✓', moveout: '✓' },
+    { category: 'Kitchen', task: 'Microwave inside and out', standard: '✓', deep: '✓', moveout: '✓' },
+    { category: 'Kitchen', task: 'Stovetop', standard: '✓', deep: '✓', moveout: '✓' },
+    { category: 'Kitchen', task: 'Range hood and backsplash degreased', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Kitchen', task: 'Cabinet fronts', standard: 'Spot', deep: 'Full', moveout: 'Full' },
+    { category: 'Kitchen', task: 'Under and behind movable appliances', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Kitchen', task: 'Inside oven', standard: 'Add-on', deep: 'Add-on', moveout: '✓' },
+    { category: 'Kitchen', task: 'Inside refrigerator', standard: 'Add-on', deep: 'Add-on', moveout: '✓' },
+    { category: 'Kitchen', task: 'Inside dishwasher', standard: '—', deep: '—', moveout: '✓' },
+    { category: 'Kitchen', task: 'Inside cabinets and drawers', standard: 'Add-on', deep: 'Add-on', moveout: '✓' },
+    { category: 'Bathrooms', task: 'Toilets, tubs, showers, sinks, mirrors', standard: '✓', deep: '✓', moveout: '✓' },
+    { category: 'Bathrooms', task: 'Grout scrubbed', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Bathrooms', task: 'Soap scum and hard water removal', standard: 'Light', deep: 'Full', moveout: 'Full' },
+    { category: 'Bathrooms', task: 'Inside vanity cabinets', standard: '—', deep: '—', moveout: '✓' },
+    { category: 'Living Areas', task: 'Dusting reachable surfaces', standard: '✓', deep: '✓', moveout: '✓' },
+    { category: 'Living Areas', task: 'Ceiling fans, vents, light fixtures', standard: 'Partial', deep: 'Full', moveout: 'Full' },
+    { category: 'Living Areas', task: 'Blinds dusted', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Living Areas', task: 'Baseboards', standard: 'Vacuumed', deep: 'Wiped', moveout: 'Wiped' },
+    { category: 'Living Areas', task: 'Doors and door frames', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Living Areas', task: 'Window sills and tracks', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Living Areas', task: 'Interior window glass', standard: 'Add-on', deep: 'Add-on', moveout: '✓' },
+    { category: 'Living Areas', task: 'Under and behind light furniture', standard: '—', deep: '✓', moveout: '✓' },
+    { category: 'Living Areas', task: 'Inside closets and shelves', standard: '—', deep: '—', moveout: '✓' },
+    { category: 'Living Areas', task: 'Wall marks spot-cleaned', standard: '—', deep: '—', moveout: '✓' },
+    { category: 'Living Areas', task: 'Vacuum and mop all floors', standard: '✓', deep: '✓', moveout: '✓' },
   ];
+
+  const kitchenTasks = tasks.filter(t => t.category === 'Kitchen');
+  const bathroomTasks = tasks.filter(t => t.category === 'Bathrooms');
+  const livingTasks = tasks.filter(t => t.category === 'Living Areas');
 
   return (
     <div className="min-h-screen bg-white">
@@ -46,7 +42,7 @@ export default function ServicesPage() {
             Our Cleaning Services
           </h1>
           <p className="text-body text-brand-gray mb-8">
-            Choose the service that fits your needs. Every tier includes attention to detail and professional cleaners.
+            See exactly what's included in each tier. All services include professional attention to detail.
           </p>
         </div>
       </section>
@@ -55,229 +51,94 @@ export default function ServicesPage() {
       <section className="section bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {services.map((service, i) => (
-              <div key={i} className={`${service.color} text-white rounded-[20px] p-8`}>
-                <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-2">{service.name}</h2>
-                <p className="text-h3 font-fredoka mb-1">{service.price}</p>
-                <p className="text-small mb-6 opacity-90">{service.description}</p>
-                <Link href={service.href} className="inline-block bg-white text-brand-purple font-semibold px-6 py-2 rounded-full hover:bg-brand-lilac-white transition-colors">
-                  Learn more
-                </Link>
-              </div>
-            ))}
+            <div className="bg-brand-purple text-white rounded-[20px] p-8">
+              <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-2">Standard Cleaning</h2>
+              <p className="text-h3 font-fredoka mb-1">Starting at $120</p>
+              <p className="text-small mb-6 opacity-90">Weekly, biweekly, or monthly upkeep</p>
+            </div>
+            <div className="bg-brand-pink text-white rounded-[20px] p-8">
+              <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-2">Deep Cleaning</h2>
+              <p className="text-h3 font-fredoka mb-1">Starting at $190</p>
+              <p className="text-small mb-6 opacity-90">Not cleaned in 4+ weeks</p>
+            </div>
+            <div className="bg-brand-violet text-white rounded-[20px] p-8">
+              <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-2">Move-in / Move-out</h2>
+              <p className="text-h3 font-fredoka mb-1">Starting at $230</p>
+              <p className="text-small mb-6 opacity-90">Empty homes</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Explanation */}
+      {/* Comprehensive Checklist */}
       <section className="section bg-white">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-6 text-center">
-            Understanding Each Service
-          </h2>
-          <div className="space-y-6 text-body text-brand-gray">
-            <div className="bg-brand-lilac-white rounded-[20px] p-6">
-              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Standard Cleaning</h3>
-              <p>A complete, professional cleaning of your entire home. Perfect for regular maintenance and keeping your space fresh week to week. We clean everything you see and touch.</p>
-            </div>
-            <div className="bg-brand-lilac-white rounded-[20px] p-6">
-              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Deep Cleaning</h3>
-              <p>All of Standard, plus interior details like inside appliances, baseboards, ceiling fans, window tracks, and grout scrubbing. Best for homes needing a thorough refresh or moving in.</p>
-            </div>
-            <div className="bg-brand-lilac-white rounded-[20px] p-6">
-              <h3 className="font-fredoka text-h3 text-brand-purple mb-3">Move-in / Move-out</h3>
-              <p>Everything in Deep, plus inside closets, behind furniture, wall mark cleaning, and every cabinet interior. For empty homes requiring complete turnover before new occupants.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Comparison */}
-      <section className="section bg-brand-lilac-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-8 text-center">
-            Complete Service Details
+          <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-12 text-center">
+            Cleaning Types — What's Included
           </h2>
 
           {/* Desktop Table */}
-          <div className="hidden md:block overflow-x-auto mb-8">
-            <table className="w-full">
+          <div className="hidden md:block overflow-x-auto mb-12">
+            <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b-2 border-brand-purple">
-                  <th className="text-left py-4 px-4 font-fredoka text-h3 text-brand-purple">Service Area</th>
-                  <th className="text-left py-4 px-4 font-fredoka text-h3 text-brand-purple">Standard</th>
-                  <th className="text-left py-4 px-4 font-fredoka text-h3 text-brand-purple">Deep</th>
-                  <th className="text-left py-4 px-4 font-fredoka text-h3 text-brand-purple">Move-in/out</th>
+                <tr className="bg-brand-lilac-white">
+                  <th className="text-left py-4 px-4 font-semibold text-brand-purple border-b-2 border-brand-purple">Task</th>
+                  <th className="text-center py-4 px-4 font-semibold text-brand-purple border-b-2 border-brand-purple">Standard</th>
+                  <th className="text-center py-4 px-4 font-semibold text-brand-purple border-b-2 border-brand-purple">Deep</th>
+                  <th className="text-center py-4 px-4 font-semibold text-brand-purple border-b-2 border-brand-purple">Move-in/out</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td colSpan={4} className="py-4 px-4 font-fredoka text-h3 text-brand-purple">Kitchen</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Sink & counters</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Inside oven</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Inside fridge</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Inside dishwasher</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Cabinet interiors</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Grout scrubbed</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td colSpan={4} className="py-4 px-4 font-fredoka text-h3 text-brand-purple">Bathrooms</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Toilet & sink</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Shower/tub cleaned</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Grout scrubbed</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Hard water spots removed</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Cabinet interiors</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td colSpan={4} className="py-4 px-4 font-fredoka text-h3 text-brand-purple">Bedrooms & Living Areas</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Dust & vacuum</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Ceiling fans dusted</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Baseboards wiped</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Window sills & tracks</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Inside closets & shelves</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
-                <tr className="border-b border-brand-lavender-mist bg-white">
-                  <td className="py-3 px-4 text-brand-gray">Behind furniture</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">-</td>
-                  <td className="py-3 px-4">✓</td>
-                </tr>
+                <tr className="bg-brand-lilac-white"><td colSpan={4} className="py-3 px-4 font-semibold text-brand-purple">Kitchen</td></tr>
+                {kitchenTasks.map((task, i) => (
+                  <tr key={i} className="border-b border-brand-lavender-mist hover:bg-brand-lilac-white">
+                    <td className="py-3 px-4 text-brand-gray text-small">{task.task}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.standard}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.deep}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.moveout}</td>
+                  </tr>
+                ))}
+                <tr className="bg-brand-lilac-white"><td colSpan={4} className="py-3 px-4 font-semibold text-brand-purple">Bathrooms</td></tr>
+                {bathroomTasks.map((task, i) => (
+                  <tr key={i} className="border-b border-brand-lavender-mist hover:bg-brand-lilac-white">
+                    <td className="py-3 px-4 text-brand-gray text-small">{task.task}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.standard}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.deep}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.moveout}</td>
+                  </tr>
+                ))}
+                <tr className="bg-brand-lilac-white"><td colSpan={4} className="py-3 px-4 font-semibold text-brand-purple">Living Areas</td></tr>
+                {livingTasks.map((task, i) => (
+                  <tr key={i} className="border-b border-brand-lavender-mist hover:bg-brand-lilac-white">
+                    <td className="py-3 px-4 text-brand-gray text-small">{task.task}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.standard}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.deep}</td>
+                    <td className="text-center py-3 px-4 text-brand-purple font-semibold text-small">{task.moveout}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
 
-          {/* Mobile Accordion */}
-          <div className="md:hidden space-y-4">
-            {services.map((service, idx) => (
-              <details key={idx} className="bg-white rounded-[20px] p-6 border border-brand-lavender-mist">
-                <summary className="cursor-pointer font-fredoka text-h3 text-brand-purple hover:text-brand-pink transition-colors">
-                  {service.name}
-                </summary>
-                <div className="mt-4 space-y-4 text-brand-gray">
-                  <div>
-                    <h4 className="font-fredoka text-h4 text-brand-purple mb-2">Kitchen</h4>
-                    <ul className="text-small space-y-1">
-                      {service.kitchen.map((item, i) => (
-                        <li key={i}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-fredoka text-h4 text-brand-purple mb-2">Bathrooms</h4>
-                    <ul className="text-small space-y-1">
-                      {service.bathrooms.map((item, i) => (
-                        <li key={i}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-fredoka text-h4 text-brand-purple mb-2">Other Areas</h4>
-                    <ul className="text-small space-y-1">
-                      {service.other.map((item, i) => (
-                        <li key={i}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </details>
-            ))}
+          {/* Not Included */}
+          <div className="mt-12 bg-brand-lilac-white rounded-[20px] p-8">
+            <h3 className="font-fredoka text-h3 text-brand-purple mb-4">Not Included in Any Clean</h3>
+            <p className="text-body text-brand-gray mb-4">
+              Outside windows • Carpet shampooing • Washing whole walls • Mold or biohazards • Moving heavy furniture
+            </p>
+            <p className="text-small text-brand-gray">
+              <strong>Add-ons available:</strong> Laundry, dishes, garage, and patio cleaning.
+            </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section bg-white">
+      <section className="section bg-brand-purple text-white">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="font-fredoka text-h2-mobile md:text-h2 text-brand-purple mb-4">
-            Not sure which service is right for you?
-          </h2>
-          <p className="text-body text-brand-gray mb-8">
-            Get an instant quote and we'll help you choose the perfect cleaning service.
-          </p>
-          <Link href="/quote" className="btn-primary inline-block">
-            Get an instant quote
+          <h2 className="font-fredoka text-h2-mobile md:text-h2 mb-4">Ready to book?</h2>
+          <Link href="/quote" className="btn-primary bg-white text-brand-purple hover:bg-brand-lilac-white">
+            Get instant quote
           </Link>
         </div>
       </section>
