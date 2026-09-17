@@ -1,6 +1,6 @@
 export const BUSINESS_INFO = {
   name: 'Anisaya Cleaning',
-  phone: '(972) 555-0123',
+  phone: '(469) 653-4650',
   email: 'info@anisaya.com',
   hours: 'Mon-Sat 8am-6pm CST',
   serviceArea: ['Allen', 'Plano', 'McKinney', 'Frisco'],
