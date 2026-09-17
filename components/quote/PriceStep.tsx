@@ -227,8 +227,7 @@ export default function PriceStep({ data, onBack, onBookNow, onChatOpen }: Price
                 }),
               });
               if (response.ok) {
-                alert(`Thanks ${data.firstName}! We'll contact you at ${data.email} with more details.`);
-                window.location.href = '/';
+                window.location.href = '/quote-sent';
               }
             } catch (error) {
               alert('Error sending quote request. Please try again.');

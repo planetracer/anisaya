@@ -26,9 +26,13 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedFrequency = (cleaningType === 'deep' || cleaningType === 'moveInMoveOut')
+      ? 'oneTime'
+      : frequency;
+
     onChange({
       cleaningType,
-      frequency,
+      frequency: selectedFrequency,
       addOns,
     });
   };
@@ -91,7 +95,7 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
         ))}
       </div>
 
-      {/* Frequency - Only for Standard */}
+      {/* Frequency */}
       {cleaningType === 'standard' && (
         <div className="mb-8">
           <label className="block text-small font-nunito font-semibold text-brand-ink mb-3">
@@ -113,6 +117,22 @@ export default function CleaningTypeStep({ data, onChange, onBack }: CleaningTyp
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {cleaningType === 'deep' && (
+        <div className="mb-8 p-4 bg-brand-pink bg-opacity-10 rounded-lg border border-brand-pink">
+          <p className="text-small text-brand-ink">
+            <strong>Type:</strong> One-time deep cleaning
+          </p>
+        </div>
+      )}
+
+      {cleaningType === 'moveInMoveOut' && (
+        <div className="mb-8 p-4 bg-brand-violet bg-opacity-10 rounded-lg border border-brand-violet">
+          <p className="text-small text-brand-ink">
+            <strong>Type:</strong> One-time move-in or move-out cleaning
+          </p>
         </div>
       )}
 
